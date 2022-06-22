@@ -10,7 +10,7 @@ import UIKit
 class ViewController: UIViewController {
 
     @IBOutlet weak var tablaEjemplo: UITableView!
-    private var tableData = [String]()
+    private var tableData: [APIResponse2] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +26,7 @@ class ViewController: UIViewController {
     @objc func didPullRefresh() {
         //Refresh
         print("Start refresh")
+        fetchData()
         DispatchQueue.main.async {
             self.tablaEjemplo.refreshControl?.endRefreshing()
         }
@@ -33,23 +34,26 @@ class ViewController: UIViewController {
     
     private func fetchData(){
     
-        guard let url = URL(string: "https://api.sunrise-sunset.org/json?lat=36.7201600&lng=-4.4203400&formatted=0") else { return }
+        guard let url2 = URL(string: "https://programming-quotes-api.herokuapp.com/quotes/random") else { return }
+        
+//        guard let url = URL(string: "https://api.sunrise-sunset.org/json?lat=36.7201600&lng=-4.4203400&formatted=0") else { return }
     
-        let tarea = URLSession.shared.dataTask(with: url, completionHandler: { [weak self] data, _, error in
+        let tarea = URLSession.shared.dataTask(with: url2, completionHandler: { [weak self] data, _, error in
             guard let strongSelf = self, let data = data, error == nil else { return }
         
-            var result: APIResponse?
+            var result: APIResponse2?
             do {
-                result = try JSONDecoder().decode(APIResponse.self, from: data)
+                result = try JSONDecoder().decode(APIResponse2.self, from: data)
             } catch {
                 print(error.localizedDescription)
             }
             
             guard let finalData = result else { return }
             
-            strongSelf.tableData.append("Sunrise: \(finalData.results.sunrise)")
-            strongSelf.tableData.append("Sunset: \(finalData.results.sunset)")
-            strongSelf.tableData.append("Day Length: \(finalData.results.day_length)")
+            strongSelf.tableData.append(finalData)
+//            strongSelf.tableData.append("ID: \(finalData.id)")
+//            strongSelf.tableData.append("Author: \(finalData.author)")
+//            strongSelf.tableData.append("MSJ: \(finalData.en)")
             
             DispatchQueue.main.async {
                 strongSelf.tablaEjemplo.reloadData()
@@ -69,7 +73,8 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let celda = tablaEjemplo.dequeueReusableCell(withIdentifier: "celda", for: indexPath)
-        celda.textLabel?.text = tableData[indexPath.row]
+        celda.textLabel?.text = tableData[indexPath.row].author
+        celda.detailTextLabel?.text = tableData[indexPath.row].en
         return celda
     }
     
