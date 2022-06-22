@@ -13,6 +13,7 @@
 		60BAC43A28635BEE0008752F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 60BAC43828635BEE0008752F /* Main.storyboard */; };
 		60BAC43C28635BF10008752F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 60BAC43B28635BF10008752F /* Assets.xcassets */; };
 		60BAC43F28635BF10008752F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 60BAC43D28635BF10008752F /* LaunchScreen.storyboard */; };
+		60BAC44728635E9A0008752F /* APIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60BAC44628635E9A0008752F /* APIResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		60BAC43B28635BF10008752F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		60BAC43E28635BF10008752F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		60BAC44028635BF10008752F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		60BAC44628635E9A0008752F /* APIResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 				60BAC43228635BEE0008752F /* AppDelegate.swift */,
 				60BAC43428635BEE0008752F /* SceneDelegate.swift */,
 				60BAC43628635BEE0008752F /* ViewController.swift */,
+				60BAC44628635E9A0008752F /* APIResponse.swift */,
 				60BAC43828635BEE0008752F /* Main.storyboard */,
 				60BAC43B28635BF10008752F /* Assets.xcassets */,
 				60BAC43D28635BF10008752F /* LaunchScreen.storyboard */,
@@ -139,6 +142,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				60BAC43728635BEE0008752F /* ViewController.swift in Sources */,
+				60BAC44728635E9A0008752F /* APIResponse.swift in Sources */,
 				60BAC43328635BEE0008752F /* AppDelegate.swift in Sources */,
 				60BAC43528635BEE0008752F /* SceneDelegate.swift in Sources */,
 			);
